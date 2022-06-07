@@ -1,0 +1,33 @@
+<p>Users List</p>
+<div *ngIf="userList && !userAddMode && !userEditMode ">
+<div class="d-flex"><button (click)="userAddMode=true" class="btn btn-success m-2 text-end">Add User</button>
+<input type="text" class="form-control mt-2" style="width: 200px;" [(ngModel)]="searchText">
+<button type="reset" class="btn btn-secondary m-2 text-end" (click)="resetSearch(searchText); this.searchText = ''">Reset</button>
+<button class="btn btn-primary m-2 text-end" (click)="onChange(searchText)">Search</button>
+</div> 
+  <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filterUserList | paginate: { itemsPerPage: 10, currentPage: page}">
+            <th scope="row">{{user.id}}</th>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.mobile}}</td>
+            <td><button  (click)="getUser(user.id)" class="btn btn-primary m-2">Edit</button>
+                <button (click)="deleteUsers(user.id)" class="btn btn-info m-2">Delete</button></td>
+               
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
+<app-user-edit *ngIf="userEditMode" [userFromListComponent]="tempUser" (cancelUpdate)="cancelUpdate($event)" ></app-user-edit>
+<app-user-add *ngIf="userAddMode" (cancelRegister)="cancelAddUser($event)"></app-user-add>

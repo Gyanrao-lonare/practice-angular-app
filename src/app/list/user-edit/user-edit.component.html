@@ -1,0 +1,28 @@
+<form #userEditForm="ngForm" (ngSubmit)="updateUser()" autocomplete="off">
+    <h1 class="text-center text-primary">Update User Details</h1>
+<hr>
+<div class="form-group">
+   <input type="hidden" class="form-control" name="id" 
+   [(ngModel)]="userFromListComponent.id" placeholder="" />
+</div>
+<div class="form-group">
+   <input type="text" class="form-control" name="username" 
+   [(ngModel)]="userFromListComponent.username" placeholder="Username" />
+</div>
+<div class="form-group">
+   <input type="password" class="form-control" name="password"
+    [(ngModel)]="userFromListComponent.password" placeholder="Password"/>
+</div>
+<div class="form-group">
+   <input type="email" class="form-control" name="email"
+    [(ngModel)]="userFromListComponent.email" placeholder="Email"/>
+</div>
+<div class="form-group">
+   <input type="mobile" class="form-control" name="mobile"
+    [(ngModel)]="userFromListComponent.mobile" placeholder="Mobile"/>
+</div>
+<div class="form-group text-center" >
+<button class="btn btn-primary mr-2" type="submit">Submit </button>
+<button class="btn btn-info" type="button" (click)="cancel()">Cancel</button>
+</div>
+</form>

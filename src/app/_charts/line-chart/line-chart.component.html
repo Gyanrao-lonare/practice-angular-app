@@ -1,0 +1,35 @@
+
+    
+<!-- <div style="display: block;">
+  <canvas baseChart width="500" height="200"
+    [datasets]="lineChartData"
+    [labels]="lineChartLabels"
+    [options]="lineChartOptions"
+    [legend]="lineChartLegend"
+    [plugins]="lineChartPlugins">
+  </canvas>
+</div> -->
+<div>
+    <button type="button" class="btn btn-info ">Bubble-Chart</button>
+    <button type="button" class="btn btn-info" (click)="onClick('boxChart')">Box Chart</button>
+    <button type="button" class="btn btn-info ">Gauge-Chart</button>
+</div>
+<ngx-charts-bubble-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [results]="bubbleData"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [yScaleMin]="yScaleMin"
+  [yScaleMax]="yScaleMax"
+  [minRadius]="minRadius"
+  [maxRadius]="maxRadius"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)">
+</ngx-charts-bubble-chart>
